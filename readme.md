@@ -1,52 +1,75 @@
-# 💼 Worker Income Calculator (CLI)
+# 💼 Worker Income API
 
-> Aplicação em Java para calcular a renda mensal de um trabalhador com base em contratos por hora.
-
----
-
-<img src="image/print.png">
+> API REST desenvolvida em Java com Spring Boot durante o curso do Prof. Nélio Alves, para cálculo de renda de trabalhadores com base em contratos por hora.
 
 ---
 
 ## 🧠 Sobre o projeto
 
-Este projeto simula um sistema onde um trabalhador pertence a um departamento e possui vários contratos de trabalho por hora.  
-Com base nesses contratos, o sistema calcula a renda total em um determinado mês e ano.
+Este projeto simula um sistema de gerenciamento de trabalhadores, onde cada trabalhador possui:
 
-## 🏗️ Estrutura do projeto
+- Nome  
+- Nível (Junior, Mid-Level, Senior)  
+- Departamento  
+- Salário base  
+- Contratos de trabalho por hora  
 
-`Program.java` → Classe principal (entrada do sistema)
-* `entities/`
-  * `Worker.java` → Representa o trabalhador
-  * `Department.java` → Representa o departamento
-  * `HourContract.java` → Representa contratos por hora
-* `enums/`
-  * `WorkerLevel.java` → Nível do trabalhador (JUNIOR, MID_LEVEL, SENIOR)
+A aplicação calcula a renda total do trabalhador em um mês e ano específicos, somando o salário base com os contratos daquele período.
 
-## 🚀 Tecnologias utilizadas
-
-- Java
-- Programação Orientada a Objetos (POO)
-- Enum
-- Listas (`ArrayList`)
-- Manipulação de datas (`Date`, `Calendar`, `SimpleDateFormat`)
+---
 
 ## ⚙️ Funcionalidades
 
-Criar um trabalhador com:
-  * Nome
-  * Nível
-  * Salário base
-  * Departamento
+- Cadastro de trabalhadores e departamentos  
+- Associação de contratos por hora ao trabalhador  
+- Cálculo de renda mensal via API REST  
+- Consulta de dados via endpoint HTTP  
 
-Adicionar múltiplos contratos com:
-  * Data
-  * Valor por hora
-  * Duração (horas)
+---
 
-Calcular a renda total com base em:
-  * Salário base
-  * Contratos de um mês específico
+## 🚀 Tecnologias utilizadas
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![H2 Database](https://img.shields.io/badge/H2-003545?style=for-the-badge)
+![REST API](https://img.shields.io/badge/REST-API-blue?style=for-the-badge)
+
+- Spring Boot  
+- Spring Data JPA / Hibernate  
+- Maven Wrapper  
+- H2 Database  
+- Programação Orientada a Objetos (POO)  
+
+---
+
+## 🗄️ Banco de dados
+
+O projeto utiliza o banco H2 em memória para testes e desenvolvimento, facilitando a execução sem necessidade de configuração externa.
+
+<img src="image/db.png" alt="Banco de dados">
+
+---
+
+## 📡 Endpoint principal
+
+### Calcular renda do trabalhador
+
+```http
+GET /worker/{id}/income/{year}/{month}
+```
+
+### Exemplo
+
+```http
+GET /worker/1/income/2018/8
+```
+
+### Resposta
+
+<img src="image/api.png" alt="Resposta da API">
+
+---
 
 ## ▶️ Como executar
 
@@ -56,25 +79,43 @@ Calcular a renda total com base em:
 git clone https://github.com/aninha-jpg/worker-income-calculator.git
 ```
 
-2. Compile o Projeto:
+2. Entre na pasta do projeto:
 
 ```bash
-javac Program.java
+cd worker-income-calculator
 ```
 
-3. Execute:
+3. Execute a aplicação:
 
+### ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ```bash
-java Program
+./mvnw spring-boot:run
 ```
+
+### ![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
+```bash
+./mvnw spring-boot:run
+```
+
+### ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+```bash
+mvnw spring-boot:run
+```
+
+4. Acesse:
+
+```text
+http://localhost:8080
+```
+
+---
 
 ## 📚 Aprendizados
 
-Este projeto foi desenvolvido como parte dos meus estudos no curso de Java, do professor Nélio Alves.
-
-
-*  Uso de orientação a objetos na prática
-*  Relacionamento entre classes
-*  Uso de listas para armazenar dados
-*  Manipulação de datas em Java
-* Uso de enums para representar estados fixos
+- Criação de API REST com Spring Boot  
+- Uso de JPA/Hibernate para persistência de dados  
+- Modelagem de entidades e relacionamentos  
+- Uso de DTO para transferência de dados  
+- Manipulação de dependências com Maven Wrapper  
+- Uso de banco em memória (H2)  
+- Boas práticas com arquitetura em camadas  
