@@ -1,15 +1,14 @@
-name: Example
+name: ci
 on: [push]
 
 jobs:
   run-action:
     runs-on: ubuntu-latest
-  s  steps:
+  steps:
       - uses: actions/checkout@v4
       - uses: pipery-dev/pipery-java-ci@v1
         with:
           project_path: .
-          config_file: .pipery/config.yaml
           java_version: 21
           build_tool: auto
           tests_path: 
