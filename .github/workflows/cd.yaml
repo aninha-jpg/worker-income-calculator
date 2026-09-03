@@ -1,0 +1,18 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: GriceTurrble/github-actions-cd-action@v1.0.0
+        with:
+          token: ${{ github.token }}
+          version_file: VERSION
