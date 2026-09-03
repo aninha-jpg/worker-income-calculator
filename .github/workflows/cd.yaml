@@ -15,4 +15,4 @@ jobs:
       - uses: GriceTurrble/github-actions-cd-action@v1.0.0
         with:
           token: ${{ github.token }}
-          version_file: VERSION
+          version_file: worker/VERSION
