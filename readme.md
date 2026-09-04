@@ -83,6 +83,8 @@ git clone https://github.com/aninha-jpg/worker-income-calculator.git
 
 ```bash
 cd worker-income-calculator
+ls
+cd worker
 ```
 
 3. Execute a aplicação:
